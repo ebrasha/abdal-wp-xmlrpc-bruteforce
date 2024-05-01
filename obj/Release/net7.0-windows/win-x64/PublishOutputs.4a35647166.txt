@@ -1,0 +1,9 @@
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\Abdal WP XmlRPC BruteForce.pdb
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\D3DCompiler_47_cor3.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\PenImc_cor3.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\PresentationNative_cor3.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\vcruntime140_cor3.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\wpfgfx_cor3.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\chilkatDnCore-9_5_0.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\sni.dll
+F:\Drive-C\Documents\Github\Abdal WP XmlRPC BruteForce\Gui\Abdal WP XmlRPC BruteForce\bin\Release\net7.0-windows\win-x64\publish\Abdal WP XmlRPC BruteForce.exe
