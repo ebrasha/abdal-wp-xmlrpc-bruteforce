@@ -9,7 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Product>$(AssemblyName)</Product>
     <Authors>$(AssemblyName)</Authors>
-    <AssemblyVersion>5.0</AssemblyVersion>
+    <AssemblyVersion>5.3</AssemblyVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <AssemblyName>Abdal WP XmlRPC BruteForce</AssemblyName>
     <ApplicationIcon>Dev\UI\axwp.ico</ApplicationIcon>

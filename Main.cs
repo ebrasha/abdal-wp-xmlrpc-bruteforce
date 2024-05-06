@@ -62,6 +62,9 @@ namespace Abdal_Security_Group_App
             openFileDialogUserName.FileName = "";
             openFileDialogPassword.FileName = "";
             this.desk_alert.ThemeName = "visualStudio2022DarkTheme1";
+            list_attack_log.Items.Clear();
+            list_failed_attack.Items.Clear();
+            list_hacked_accounts.Items.Clear();
         }
 
         private void menuItem_github_Click(object sender, EventArgs e)
@@ -155,7 +158,7 @@ namespace Abdal_Security_Group_App
             {
                 ab_player.sPlayer("error");
                 this.desk_alert.CaptionText = abdal_app_name;
-                this.desk_alert.ContentText = "Please Select the usernames file";
+                this.desk_alert.ContentText = "Please Select the password file";
                 this.desk_alert.Show();
             }
             else if (!IsValidHttpOrHttpsUrl(tb_url_target.Text))
@@ -179,10 +182,6 @@ namespace Abdal_Security_Group_App
                 list_attack_log.Items.Clear();
                 list_failed_attack.Items.Clear();
                 list_hacked_accounts.Items.Clear();
-
-                list_attack_log.ResetText();
-                list_failed_attack.ResetText();
-                list_hacked_accounts.ResetText();
 
 
                 if (bg_worker.IsBusy != true)
@@ -254,7 +253,11 @@ namespace Abdal_Security_Group_App
 
                     CheckAndClearListSafe();
 
-                    list_attack_log.SelectedIndex = list_attack_log.Items.Count - 1;
+                    if (list_attack_log.Items.Count > 0)
+                    {
+                        list_attack_log.TopIndex = list_attack_log.Items.Count - 1;
+                    }
+                    //  list_attack_log.SelectedIndex = list_attack_log.Items.Count - 1;
 
                     try
                     {
@@ -276,6 +279,8 @@ namespace Abdal_Security_Group_App
                     {
                         list_attack_log.Items.Add($"Failed with username {username} and password {password}");
                         list_attack_log.Items.Add($"Server Error =  {ex.Message}");
+
+
                         // int visibleItems = list_attack_log.ClientSize.Height /
                         //                    list_attack_log.ItemHeight;
                         // list_attack_log.ScrollMode = Math.Max(list_attack_log.Items.Count - visibleItems + 1, 0);
@@ -304,7 +309,12 @@ namespace Abdal_Security_Group_App
                         }
                     }
 
-                    if (stop_attack_status) break;
+                    if (stop_attack_status)
+                    {
+                        openFileDialogUserName.Reset();
+                        openFileDialogPassword.Reset();
+                        break;
+                    };
                 }
 
                 if (success) break; // Exit the outer loop if a login was successful
@@ -329,6 +339,7 @@ namespace Abdal_Security_Group_App
 
         private void radButton1_Click(object sender, EventArgs e)
         {
+            openFileDialogUserName.Reset();
             try
             {
                 openFileDialogUserName.AddExtension = false;
@@ -345,6 +356,7 @@ namespace Abdal_Security_Group_App
                     username_file_selected = true;
                     string filePath = openFileDialogUserName.FileName;
                     usernames_list = File.ReadAllLines(filePath);
+                    radButton1.ForeColor = Color.GreenYellow;
                 }
             }
             catch (Exception ex)
@@ -363,6 +375,8 @@ namespace Abdal_Security_Group_App
         private void radRepeatButton1_Click(object sender, EventArgs e)
         {
             stop_attack_status = true;
+            radButton1.ForeColor = Color.White;
+            radButton2.ForeColor = Color.White;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -377,6 +391,7 @@ namespace Abdal_Security_Group_App
 
         private void radButton2_Click(object sender, EventArgs e)
         {
+            openFileDialogPassword.Reset();
             try
             {
                 openFileDialogPassword.AddExtension = false;
@@ -393,6 +408,7 @@ namespace Abdal_Security_Group_App
                     username_file_selected = true;
                     string filePath = openFileDialogPassword.FileName;
                     passwords_list = File.ReadAllLines(filePath);
+                    radButton2.ForeColor = Color.GreenYellow;
                 }
             }
             catch (Exception ex)

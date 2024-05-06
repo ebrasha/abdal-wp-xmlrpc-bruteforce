@@ -49,16 +49,16 @@
             radButton1 = new Telerik.WinControls.UI.RadButton();
             tb_url_target = new Telerik.WinControls.UI.RadTextBox();
             radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
-            list_attack_log = new Telerik.WinControls.UI.RadListControl();
+            list_attack_log = new ListBox();
             radGroupBox3 = new Telerik.WinControls.UI.RadGroupBox();
-            list_hacked_accounts = new Telerik.WinControls.UI.RadListControl();
             radGroupBox4 = new Telerik.WinControls.UI.RadGroupBox();
-            list_failed_attack = new Telerik.WinControls.UI.RadListControl();
             windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             openFileDialogUserName = new OpenFileDialog();
             openFileDialogPassword = new OpenFileDialog();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            list_failed_attack = new ListBox();
+            list_hacked_accounts = new ListBox();
             ((System.ComponentModel.ISupportInitialize)radMenu1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_start).BeginInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox1).BeginInit();
@@ -72,13 +72,10 @@
             ((System.ComponentModel.ISupportInitialize)tb_url_target).BeginInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox2).BeginInit();
             radGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)list_attack_log).BeginInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox3).BeginInit();
             radGroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)list_hacked_accounts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox4).BeginInit();
             radGroupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)list_failed_attack).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)this).BeginInit();
@@ -253,17 +250,16 @@
             // 
             // list_attack_log
             // 
+            list_attack_log.BackColor = Color.FromArgb(36, 36, 36);
+            list_attack_log.BorderStyle = BorderStyle.None;
             list_attack_log.Dock = DockStyle.Fill;
-            list_attack_log.ForeColor = Color.FromArgb(248, 196, 30);
-            list_attack_log.ItemHeight = 22;
+            list_attack_log.ForeColor = Color.Tomato;
+            list_attack_log.FormattingEnabled = true;
+            list_attack_log.ItemHeight = 15;
             list_attack_log.Location = new Point(2, 18);
             list_attack_log.Name = "list_attack_log";
             list_attack_log.Size = new Size(508, 84);
-            list_attack_log.TabIndex = 0;
-            list_attack_log.ThemeName = "VisualStudio2022Dark";
-            ((Telerik.WinControls.UI.RadListElement)list_attack_log.GetChildAt(0)).ItemHeight = 22;
-            ((Telerik.WinControls.UI.RadListElement)list_attack_log.GetChildAt(0)).ForeColor = Color.Black;
-            ((Telerik.WinControls.UI.RadListElement)list_attack_log.GetChildAt(0)).BackColor = Color.Transparent;
+            list_attack_log.TabIndex = 8;
             // 
             // radGroupBox3
             // 
@@ -279,19 +275,6 @@
             radGroupBox3.Text = "Hacked Accounts";
             radGroupBox3.ThemeName = "VisualStudio2022Dark";
             // 
-            // list_hacked_accounts
-            // 
-            list_hacked_accounts.Dock = DockStyle.Fill;
-            list_hacked_accounts.ItemHeight = 22;
-            list_hacked_accounts.Location = new Point(2, 18);
-            list_hacked_accounts.Name = "list_hacked_accounts";
-            list_hacked_accounts.Size = new Size(508, 65);
-            list_hacked_accounts.TabIndex = 1;
-            list_hacked_accounts.ThemeName = "VisualStudio2022Dark";
-            ((Telerik.WinControls.UI.RadListElement)list_hacked_accounts.GetChildAt(0)).ItemHeight = 22;
-            ((Telerik.WinControls.UI.RadListElement)list_hacked_accounts.GetChildAt(0)).ForeColor = Color.FromArgb(67, 255, 151);
-            ((Telerik.WinControls.UI.RadListElement)list_hacked_accounts.GetChildAt(0)).BackColor = Color.Transparent;
-            // 
             // radGroupBox4
             // 
             radGroupBox4.AccessibleRole = AccessibleRole.Grouping;
@@ -305,19 +288,6 @@
             radGroupBox4.TabIndex = 5;
             radGroupBox4.Text = "Failed Attack";
             radGroupBox4.ThemeName = "VisualStudio2022Dark";
-            // 
-            // list_failed_attack
-            // 
-            list_failed_attack.Dock = DockStyle.Fill;
-            list_failed_attack.ItemHeight = 22;
-            list_failed_attack.Location = new Point(2, 18);
-            list_failed_attack.Name = "list_failed_attack";
-            list_failed_attack.Size = new Size(508, 89);
-            list_failed_attack.TabIndex = 1;
-            list_failed_attack.ThemeName = "VisualStudio2022Dark";
-            ((Telerik.WinControls.UI.RadListElement)list_failed_attack.GetChildAt(0)).ItemHeight = 22;
-            ((Telerik.WinControls.UI.RadListElement)list_failed_attack.GetChildAt(0)).ForeColor = Color.FromArgb(205, 40, 40);
-            ((Telerik.WinControls.UI.RadListElement)list_failed_attack.GetChildAt(0)).BackColor = Color.Transparent;
             // 
             // openFileDialogUserName
             // 
@@ -352,13 +322,39 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
+            // list_failed_attack
+            // 
+            list_failed_attack.BackColor = Color.FromArgb(36, 36, 36);
+            list_failed_attack.BorderStyle = BorderStyle.None;
+            list_failed_attack.Dock = DockStyle.Fill;
+            list_failed_attack.ForeColor = Color.White;
+            list_failed_attack.FormattingEnabled = true;
+            list_failed_attack.ItemHeight = 15;
+            list_failed_attack.Location = new Point(2, 18);
+            list_failed_attack.Name = "list_failed_attack";
+            list_failed_attack.Size = new Size(508, 89);
+            list_failed_attack.TabIndex = 0;
+            // 
+            // list_hacked_accounts
+            // 
+            list_hacked_accounts.BackColor = Color.FromArgb(36, 36, 36);
+            list_hacked_accounts.BorderStyle = BorderStyle.None;
+            list_hacked_accounts.Dock = DockStyle.Fill;
+            list_hacked_accounts.ForeColor = Color.White;
+            list_hacked_accounts.FormattingEnabled = true;
+            list_hacked_accounts.ItemHeight = 15;
+            list_hacked_accounts.Location = new Point(2, 18);
+            list_hacked_accounts.Name = "list_hacked_accounts";
+            list_hacked_accounts.Size = new Size(508, 65);
+            list_hacked_accounts.TabIndex = 8;
+            // 
             // Main
             // 
             AutoScaleBaseSize = new Size(7, 15);
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.bg;
-            BackgroundImageLayout = ImageLayout.Center;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(808, 480);
             Controls.Add(radGroupBox3);
             Controls.Add(pictureBox2);
@@ -390,13 +386,10 @@
             ((System.ComponentModel.ISupportInitialize)tb_url_target).EndInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox2).EndInit();
             radGroupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)list_attack_log).EndInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox3).EndInit();
             radGroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)list_hacked_accounts).EndInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox4).EndInit();
             radGroupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)list_failed_attack).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)this).EndInit();
@@ -432,8 +425,8 @@
         private Telerik.WinControls.UI.RadRepeatButton radRepeatButton1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Telerik.WinControls.UI.RadListControl list_attack_log;
-        private Telerik.WinControls.UI.RadListControl list_hacked_accounts;
-        private Telerik.WinControls.UI.RadListControl list_failed_attack;
+        private ListBox list_attack_log;
+        private ListBox list_failed_attack;
+        private ListBox list_hacked_accounts;
     }
 }
