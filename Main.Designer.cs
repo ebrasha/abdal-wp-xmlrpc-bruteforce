@@ -51,14 +51,14 @@
             radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
             list_attack_log = new ListBox();
             radGroupBox3 = new Telerik.WinControls.UI.RadGroupBox();
+            list_hacked_accounts = new ListBox();
             radGroupBox4 = new Telerik.WinControls.UI.RadGroupBox();
+            list_failed_attack = new ListBox();
             windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             openFileDialogUserName = new OpenFileDialog();
             openFileDialogPassword = new OpenFileDialog();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            list_failed_attack = new ListBox();
-            list_hacked_accounts = new ListBox();
             ((System.ComponentModel.ISupportInitialize)radMenu1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btn_start).BeginInit();
             ((System.ComponentModel.ISupportInitialize)radGroupBox1).BeginInit();
@@ -275,6 +275,19 @@
             radGroupBox3.Text = "Hacked Accounts";
             radGroupBox3.ThemeName = "VisualStudio2022Dark";
             // 
+            // list_hacked_accounts
+            // 
+            list_hacked_accounts.BackColor = Color.FromArgb(36, 36, 36);
+            list_hacked_accounts.BorderStyle = BorderStyle.None;
+            list_hacked_accounts.Dock = DockStyle.Fill;
+            list_hacked_accounts.ForeColor = Color.White;
+            list_hacked_accounts.FormattingEnabled = true;
+            list_hacked_accounts.ItemHeight = 15;
+            list_hacked_accounts.Location = new Point(2, 18);
+            list_hacked_accounts.Name = "list_hacked_accounts";
+            list_hacked_accounts.Size = new Size(508, 65);
+            list_hacked_accounts.TabIndex = 8;
+            // 
             // radGroupBox4
             // 
             radGroupBox4.AccessibleRole = AccessibleRole.Grouping;
@@ -288,6 +301,19 @@
             radGroupBox4.TabIndex = 5;
             radGroupBox4.Text = "Failed Attack";
             radGroupBox4.ThemeName = "VisualStudio2022Dark";
+            // 
+            // list_failed_attack
+            // 
+            list_failed_attack.BackColor = Color.FromArgb(36, 36, 36);
+            list_failed_attack.BorderStyle = BorderStyle.None;
+            list_failed_attack.Dock = DockStyle.Fill;
+            list_failed_attack.ForeColor = Color.White;
+            list_failed_attack.FormattingEnabled = true;
+            list_failed_attack.ItemHeight = 15;
+            list_failed_attack.Location = new Point(2, 18);
+            list_failed_attack.Name = "list_failed_attack";
+            list_failed_attack.Size = new Size(508, 89);
+            list_failed_attack.TabIndex = 0;
             // 
             // openFileDialogUserName
             // 
@@ -321,32 +347,6 @@
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
-            // 
-            // list_failed_attack
-            // 
-            list_failed_attack.BackColor = Color.FromArgb(36, 36, 36);
-            list_failed_attack.BorderStyle = BorderStyle.None;
-            list_failed_attack.Dock = DockStyle.Fill;
-            list_failed_attack.ForeColor = Color.White;
-            list_failed_attack.FormattingEnabled = true;
-            list_failed_attack.ItemHeight = 15;
-            list_failed_attack.Location = new Point(2, 18);
-            list_failed_attack.Name = "list_failed_attack";
-            list_failed_attack.Size = new Size(508, 89);
-            list_failed_attack.TabIndex = 0;
-            // 
-            // list_hacked_accounts
-            // 
-            list_hacked_accounts.BackColor = Color.FromArgb(36, 36, 36);
-            list_hacked_accounts.BorderStyle = BorderStyle.None;
-            list_hacked_accounts.Dock = DockStyle.Fill;
-            list_hacked_accounts.ForeColor = Color.White;
-            list_hacked_accounts.FormattingEnabled = true;
-            list_hacked_accounts.ItemHeight = 15;
-            list_hacked_accounts.Location = new Point(2, 18);
-            list_hacked_accounts.Name = "list_hacked_accounts";
-            list_hacked_accounts.Size = new Size(508, 65);
-            list_hacked_accounts.TabIndex = 8;
             // 
             // Main
             // 

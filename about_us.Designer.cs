@@ -114,7 +114,9 @@
             Controls.Add(richTextBox_about_us);
             Controls.Add(radPictureBox1);
             Controls.Add(radLabel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "about_us";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "About Us";

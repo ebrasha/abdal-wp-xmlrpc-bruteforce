@@ -20,6 +20,9 @@ Abdal WP XmlRPC BruteForce is a tool designed to test the security of WordPress 
 
 - Supports multi-million password lists
 - Ability to retrieve username lists for multi-user sites
+- Detection of your account being blocked
+- Detection of the target running WordPress
+- Detection of XMLRPC authentication availability
 - Voice messaging
 - Error-free in compromised accounts
 - Free from spyware and any kind of malicious code

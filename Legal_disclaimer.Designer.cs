@@ -82,7 +82,9 @@
             Controls.Add(bt_Decline);
             Controls.Add(bt_Accept);
             Controls.Add(legal_dis);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "Legal_disclaimer";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Legal disclaimer";
